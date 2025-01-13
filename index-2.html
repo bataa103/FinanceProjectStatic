@@ -39,7 +39,40 @@
 </head>
 
 <body>
+    <header>
+        <div class="row align-items-center">
+            <div class="col-md-3 container">
+                <a href="{{ url('/') }}">
+                    <img src="{{ asset('images/brandlogo.png') }}" alt="Personal Budget Logo" class="logo">
+                </a>
+            </div>
+            @if (Route::has('login'))
+                <nav class="col-md-9 text-end">
+                    @auth
+                        <a href="{{ url('/dashboard') }}" class="btn btn-link">
+                            Dashboard
+                        </a>
+                        <form method="POST" action="{{ route('logout') }}" style="display: inline;">
+                            @csrf
+                            <button type="submit" class="btn btn-danger">
+                                Log Out
+                            </button>
+                        </form>
+                    @else
+                        <a href="{{ route('login') }}" class="btn btn-link">
+                            Log in
+                        </a>
 
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}" class="btn btn-primary">
+                                Register
+                            </a>
+                        @endif
+                    @endauth
+                </nav>
+            @endif
+        </div>
+    </header>
     <!-- start page-wrapper -->
     <div class="page-wrapper">
 
@@ -66,15 +99,15 @@
                                     <div class="icon">
                                         <i class="fi flaticon-phone-call"></i>
                                     </div>
-                                    <p>+123 4567 889</p>
-                                    <span>Give us a call</span>
+                                    <p>+(976)99783188 </p>
+                                    <span>Лавлах</span>
                                 </div>
                                 <div>
                                     <div class="icon">
                                         <i class="fi flaticon-closed-envelope"></i>
                                     </div>
-                                    <p>support@charter.com</p>
-                                    <span>Mail us</span>
+                                    <p>support@pb.com</p>
+                                    <span>Цахим шуудан</span>
                                 </div>
                             </div>
                         </div>
@@ -90,13 +123,13 @@
                                         <i class="fi flaticon-clock-1"></i>
                                     </div>
                                     <p>Mon-Fri: 9 am-7 pm</p>
-                                    <span>working hours</span>
+                                    <span>Ажлын цаг</span>
                                 </div>
                                 <div>
                                     <div class="icon">
                                         <i class="fi flaticon-placeholder"></i>
                                     </div>
-                                    <p>121 King Street, <br> Melbourne, Australia</p>
+                                    <p>Төмөчин гудамж, <br> Улаанбаатар, Монгол улс</p>
                                 </div>
                             </div>
                         </div>
@@ -118,7 +151,7 @@
                         <button class="close-navbar"><i class="fa fa-close"></i></button>
                         <ul class="nav navbar-nav">
                             <li class="menu-item-has-children">
-                                <a href="#">Home</a>
+                                <a href="#">Нүүр хуудас</a>
                                 <ul class="sub-menu">
                                     <li><a href="index.html">Home style 1</a></li>
                                     <li><a href="index-2.html">Home style 2</a></li>
@@ -133,9 +166,9 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li><a href="about.html">About</a></li>
+                            <li><a href="about.html">Бидний тухай</a></li>
                             <li class="menu-item-has-children">
-                                <a href="#">Services</a>
+                                <a href="#">Үйлилгээ</a>
                                 <ul class="sub-menu">
                                     <li><a href="services.html">All Services</a></li>
                                     <li><a href="service-single.html">Business Deal</a></li>
@@ -145,9 +178,9 @@
                                     <li><a href="service-single-startup.html">Startup</a></li>
                                 </ul>
                             </li>
-                            <li><a href="projects.html">Projects</a></li>
+                            <li><a href="projects.html">Төслүүд</a></li>
                             <li class="menu-item-has-children">
-                                <a href="#">Pages</a>
+                                <a href="#">Хуудас</a>  
                                 <ul class="sub-menu">
                                     <li><a href="career.html">Career</a></li>
                                     <li><a href="case-studies.html">Case studies</a></li>
@@ -158,15 +191,7 @@
                                     <li><a href="testimonials.html">Testimonials</a></li>
                                 </ul>
                             </li>
-                            <li class="menu-item-has-children">
-                                <a href="#">Blog</a>
-                                <ul class="sub-menu">
-                                    <li><a href="blog.html">Blog</a></li>
-                                    <li><a href="blog-grid.html">Blog grid</a></li>
-                                    <li><a href="blog-details.html">Blog single</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="contact.html">Холбоо барих</a></li>
                         </ul>
                     </div><!-- end of nav-collapse -->
 
@@ -206,25 +231,10 @@
                     <div class="container">
                         <div class="row">
                             <div class="col col-lg-7 col-sm-10 slide-caption">
-                                <h2>We provide best consulting services for your business</h2>
-                                <p>An unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.</p>
+                                <h2>Бид танд хувийн төсвөө үр дүнтэй удирдахад туслах шилдэг зөвлөх үйлчилгээг санал болгож байна.s</h2>
+                                <p>Үл мэдэгдэх хэвлэгч нь төрөл бүрийн цуглуулгыг дахин эмхэлж, түүвэр ном бүтээх болсон бөгөөд энэ нь таван зуун гаруй жилийн турш хадгалагдан үлджээ.</p>
                                 <div class="btns">
-                                    <a href="#" class="theme-btn">Our Services</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="slide">
-                    <img src="assets/images/slider/slide-4.jpg" alt class="slider-bg">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col col-lg-7 col-sm-10 slide-caption">
-                                <h2>We provide best consulting services for your business</h2>
-                                <p>An unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.</p>
-                                <div class="btns">
-                                    <a href="#" class="theme-btn">Our Services</a>
+                                    <a href="#" class="theme-btn"> Үйлчилгээ</a>
                                 </div>
                             </div>
                         </div>
@@ -234,79 +244,20 @@
         </section>
         <!-- end of hero slider -->
 
-
-        <!-- start services-section-s3 -->
-        <section class="services-section-s3">
-            <div class="container">
-                <div class="row">
-                    <div class="col col-xs-12">
-                        <div class="service-grids">
-                            <div class="grid">
-                                <div class="img-overlay">
-                                    <img src="assets/images/services/img-1.jpg" alt>
-                                    <div class="overlay">
-                                        <a href="#"><i class="fa fa-link"></i></a>
-                                    </div>
-                                </div>
-                                <div class="details">
-                                    <h3><i class="fi flaticon-coins"></i> Business Consulting</h3>
-                                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-                                </div>
-                            </div>
-                            <div class="grid">
-                                <div class="img-overlay">
-                                    <img src="assets/images/services/img-2.jpg" alt>
-                                    <div class="overlay">
-                                        <a href="#"><i class="fa fa-link"></i></a>
-                                    </div>
-                                </div>
-                                <div class="details">
-                                    <h3><i class="fi flaticon-graphic"></i> Investment Planning</h3>
-                                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-                                </div>
-                            </div>
-                            <div class="grid">
-                                <div class="img-overlay">
-                                    <img src="assets/images/services/img-3.jpg" alt>
-                                    <div class="overlay">
-                                        <a href="#"><i class="fa fa-link"></i></a>
-                                    </div>
-                                </div>
-                                <div class="details">
-                                    <h3><i class="fi flaticon-report"></i> Startup Funding</h3>
-                                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col col-xs-12">
-                        <div class="all-services">
-                            <a href="#" class="theme-btn-s4">All Services</a>
-                        </div>
-                    </div>
-                </div>
-            </div> <!-- end container -->
-        </section>
-        <!-- end services-section-s3 -->
-
-
         <!-- start about-section-s3 -->
         <section class="about-section-s3">
             <div class="content">
                 <div class="left-col">
                     <div class="inner">
-                        <h2>People do rely on our Consulting. Find out why?</h2>
-                        <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
-                        <a href="#" class="theme-btn-s4">About us</a>
+                        <h2>Яагад бидний үйлчилгээ хэрэгтэй вэ?</h2>
+                        <p>Санхүүгийн хөтөч програм нь орлого, зарлагаа хянаж, төсөв төлөвлөхөд тусалдаг. Энэ нь хуримтлал үүсгэж, санхүүгийн зорилгодоо хүрэхэд дэмжлэг үзүүлнэ. Мөн санхүүгийн зуршлыг сайжруулж, мөнгөө илүү ухаалаг зарцуулах боломж олгодог.</p>
+                        <a href="#" class="theme-btn-s4">Үйлгээний тухай мэдээлэл</a>
                     </div>
                 </div>
                 <div class="right-col">
                     <div class="video-holder">
                         <a href="https://www.youtube.com/embed/7e90gBu4pas?autoplay=1" class="video-btn" data-type="iframe">
-                            <i class="fa fa-play"></i> Play Video
+                            <i class="fa fa-play"></i> Бичлэг үзэх
                         </a>
                     </div>
                 </div>
@@ -321,7 +272,7 @@
                 <div class="row">
                     <div class="col col-lg-10 col-lg-offset-1">
                         <div class="section-title-s5">
-                            <h2>Our Recent Case Studies</h2>
+                            <h2>Бидний сүүлийн үеийн жишээ судалгаанууд</h2>
                             <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
                         </div>
                     </div>
@@ -374,433 +325,100 @@
         <!-- end case-studies-section -->
 
 
-        <!-- start projects-section-s2 -->
-        <section class="projects-section-s2 section-padding">
-            <div class="container">
-                <div class="row">
-                    <div class="col col-lg-6 col-lg-offset-3 col-sm-8 col-sm-offset-2">
-                        <div class="section-title-s6">
-                            <h2>Our recent Projects</h2>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="row">
-                    <div class="col col-xs-12 sortable-gallery">
-                        <div class="gallery-filters">
-                            <ul>
-                                <li><a data-filter="*" href="#" class="current">All</a></li>
-                                <li><a data-filter=".business" href="#">Business</a></li>
-                                <li><a data-filter=".consulting" href="#">Consulting</a></li>
-                                <li><a data-filter=".insurance" href="#">Insurance</a></li>
-                                <li><a data-filter=".others" href="#">Others</a></li>
-                            </ul>
-                        </div>
+       <!-- cta-section хэсгийн эхлэл -->
+<section class="cta-section">
+    <div class="container">
+        <div class="row">
+            <div class="col col-xs-12">
+                <h2>Бид дэлхийн <span>#1 санхүүгийн компани</span></h2>
+                <a href="#" class="theme-btn-s3">Төслөө эхлүүлээрэй</a>
+            </div>
+        </div>
+    </div> <!-- container-ийн төгсгөл -->
+</section>
+<!-- cta-section хэсгийн төгсгөл -->
 
-                        <div class="gallery-container">
-                            <div class="grid business others">
-                                <img src="assets/images/projects-gallery/img-1.jpg" alt class="img img-responsive">
-                                <div class="details">
-                                    <div class="inner">
-                                        <a href="#"><i class="fa fa-chevron-circle-right"></i></a>
-                                        <div class="cat">
-                                            <span>Trojan Horse</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="grid eudcation consulting">
-                                <img src="assets/images/projects-gallery/img-2.jpg" alt class="img img-responsive">
-                                <div class="details">
-                                    <div class="inner">
-                                        <a href="#"><i class="fa fa-chevron-circle-right"></i></a>
-                                        <div class="cat">
-                                            <span>Trojan Horse</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="grid consulting eudcation business">
-                                <img src="assets/images/projects-gallery/img-3.jpg" alt class="img img-responsive">
-                                <div class="details">
-                                    <div class="inner">
-                                        <a href="#"><i class="fa fa-chevron-circle-right"></i></a>
-                                        <div class="cat">
-                                            <span>Trojan Horse</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="grid business insurance">
-                                <img src="assets/images/projects-gallery/img-4.jpg" alt class="img img-responsive">
-                                <div class="details">
-                                    <div class="inner">
-                                        <a href="#"><i class="fa fa-chevron-circle-right"></i></a>
-                                        <div class="cat">
-                                            <span>Trojan Horse</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="grid consulting others">
-                                <img src="assets/images/projects-gallery/img-5.jpg" alt class="img img-responsive">
-                                <div class="details">
-                                    <div class="inner">
-                                        <a href="#"><i class="fa fa-chevron-circle-right"></i></a>
-                                        <div class="cat">
-                                            <span>Trojan Horse</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="grid insurance others business">
-                                <img src="assets/images/projects-gallery/img-6.jpg" alt class="img img-responsive">
-                                <div class="details">
-                                    <div class="inner">
-                                        <a href="#"><i class="fa fa-chevron-circle-right"></i></a>
-                                        <div class="cat">
-                                            <span>Trojan Horse</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col col-xs-12">
-                        <div class="all-projects">
-                            <a href="#">Click here to view our <span>All Projects</span></a>
-                        </div>
-                    </div>
-                </div>
-            </div> <!-- end container -->
-        </section>
-        <!-- end projects-section-s2 -->
-
-
-        <!-- start testimonials-faq-section -->
-        <section class="testimonials-faq-section section-padding">
-            <div class="container">
-                <div class="row">
-                    <div class="col col-md-7">
-                        <div class="testimonials-grids testimonials-slider">
-                            <div class="grid">
-                                <div class="title">
-                                    <h3>Super fast service and very helpful</h3>
-                                    <span> - Adam West</span>
-                                </div>
-                                <div class="details">
-                                    <p>Exercitation ullamco laboris nisi ut aliquip ex ea com modo consequat. Duisaute irure dolor in repre hender itin.</p>
-                                    <div class="rating">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="grid">
-                                <div class="title">
-                                    <h3>Super fast service and very helpful</h3>
-                                    <span> - Adam West</span>
-                                </div>
-                                <div class="details">
-                                    <p>Exercitation ullamco laboris nisi ut aliquip ex ea com modo consequat. Duisaute irure dolor in repre hender itin.</p>
-                                    <div class="rating">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="funfact-grids start-count">
-                            <div class="grid">
-                                <div class="icon">
-                                    <i class="fi flaticon-music"></i>
-                                </div>
-                                <h3>
-                                    <span class="counter" data-count="450">00</span><span>+</span>
-                                </h3>
-                                <p>Completed Projects</p>
-                            </div>
-                            <div class="grid">
-                                <div class="icon">
-                                    <i class="fi flaticon-group"></i>
-                                </div>
-                                <h3>
-                                    <span class="counter" data-count="600">00</span><span>+</span>
-                                </h3>
-                                <p>Skilled Employees</p>
-                            </div>
-                            <div class="grid">
-                                <div class="icon">
-                                    <i class="fi flaticon-like"></i>
-                                </div>
-                                <h3>
-                                    <span class="counter" data-count="100">00</span><span>%</span>
-                                </h3>
-                                <p>Satisfaction</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col col-md-5">
-                        <div class="faq-section">
-                            <h2>Frequently Asked Questions</h2>
-                            <div class="panel-group faq-accordion theme-accordion-s1" id="accordion">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true">1. Why do I need insurance?</a>
-                                    </div>
-                                    <div id="collapseOne" class="panel-collapse collapse in">
-                                        <div class="panel-body">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">2. What should I insure?</a>
-                                    </div>
-                                    <div id="collapseTwo" class="panel-collapse collapse">
-                                        <div class="panel-body">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">3. What constitutes “personal insurance”?</a>
-                                    </div>
-                                    <div id="collapseThree" class="panel-collapse collapse">
-                                        <div class="panel-body">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> <!-- end faq-section -->
-                    </div>
-                </div>
-            </div> <!-- end container -->
-        </section>
-        <!-- end testimonials-faq-section -->
-
-
-        <!-- start cta-section -->
-        <section class="cta-section">
-            <div class="container">
-                <div class="row">
-                    <div class="col col-xs-12">
-                        <h2>We are the <span>#1 Finance company</span> in the world</h2>
-                        <a href="#" class="theme-btn-s3">Start Your Project Now</a>
-                    </div>
-                </div>
-            </div> <!-- end container -->
-        </section>
-        <!-- end cta-section -->
-
-
-        <!-- start latest-blog-section-s2 -->
-        <section class="latest-blog-section-s2 section-padding">
-            <div class="container">
-                <div class="row">
-                    <div class="col col-xs-12">
-                        <div class="section-title-s3">
-                            <h2>Blog &amp; Article</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col col-xs-12">
-                        <div class="blog-grids">
-                            <div class="grid">
-                                <div class="entry-media">
-                                    <img src="assets/images/blog/img-1.jpg" alt>
-                                    <div class="overlay">
-                                        <a href="#"><i class="fa fa-link"></i></a>
-                                    </div>
-                                </div>
-                                <div class="entry-meta">
-                                    <ul>
-                                        <li><a href="#"><i class="fa fa-tags"></i> Business</a></li>
-                                        <li><a href="#"><i class="fa fa-user"></i> Admin</a></li>
-                                        <li><a href="#"><i class="fa fa-calendar"></i> Nov 29,2018</a></li>
-                                    </ul>
-                                </div>
-                                <div class="entry-body">
-                                    <h3><a href="#">Profit by Balancing Your Inventory in as Quick as 12 Months</a></h3>
-                                </div>
-                            </div>
-                            <div class="grid">
-                                <div class="entry-media">
-                                    <img src="assets/images/blog/img-2.jpg" alt>
-                                    <div class="overlay">
-                                        <a href="#"><i class="fa fa-link"></i></a>
-                                    </div>
-                                </div>
-                                <div class="entry-meta">
-                                    <ul>
-                                        <li><a href="#"><i class="fa fa-tags"></i> Business</a></li>
-                                        <li><a href="#"><i class="fa fa-user"></i> Admin</a></li>
-                                        <li><a href="#"><i class="fa fa-calendar"></i> Nov 29,2018</a></li>
-                                    </ul>
-                                </div>
-                                <div class="entry-body">
-                                    <h3><a href="#">Closing Enterprise Analytics Talent Gap elements while</a></h3>
-                                </div>
-                            </div>
-                            <div class="grid">
-                                <div class="entry-media">
-                                    <img src="assets/images/blog/img-3.jpg" alt>
-                                    <div class="overlay">
-                                        <a href="#"><i class="fa fa-link"></i></a>
-                                    </div>
-                                </div>
-                                <div class="entry-meta">
-                                    <ul>
-                                        <li><a href="#"><i class="fa fa-tags"></i> Business</a></li>
-                                        <li><a href="#"><i class="fa fa-user"></i> Admin</a></li>
-                                        <li><a href="#"><i class="fa fa-calendar"></i> Nov 29,2018</a></li>
-                                    </ul>
-                                </div>
-                                <div class="entry-body">
-                                    <h3><a href="#">The CHRO Agenda: Enabling Digital Transformation Takes Center Stage</a></h3>
-                                </div>
-                            </div>
-                            <div class="grid">
-                                <div class="entry-media">
-                                    <img src="assets/images/blog/img-4.jpg" alt>
-                                    <div class="overlay">
-                                        <a href="#"><i class="fa fa-link"></i></a>
-                                    </div>
-                                </div>
-                                <div class="entry-meta">
-                                    <ul>
-                                        <li><a href="#"><i class="fa fa-tags"></i> Business</a></li>
-                                        <li><a href="#"><i class="fa fa-user"></i> Admin</a></li>
-                                        <li><a href="#"><i class="fa fa-calendar"></i> Nov 29,2018</a></li>
-                                    </ul>
-                                </div>
-                                <div class="entry-body">
-                                    <h3><a href="#">Integrated Close: Significantly Shorten the Cycle for Closing the Books</a></h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col col-xs-12">
-                        <div class="more-news">
-                            <a href="#" class="theme-btn-s4">More News</a>
-                        </div>                    
-                    </div>
-                </div>
-            </div> <!-- end container -->
-        </section>
-        <!-- end latest-blog-section-s2 -->              
-
-
-        <!-- start site-footer -->
-        <footer class="site-footer">
-            <div class="upper-footer">
-                <div class="container">
-                    <div class="row">
-                        <div class="col col-md-3 col-sm-6">
-                            <div class="widget about-widget">
-                                <div class="footer-logo"><img src="assets/images/footer-logo.png" alt></div>
-                                <p>Lorem ipsum dolor sit amet, consecte tur adipiscing elit, sed do eiusmod te mpor incididunt ut.mco laboris nisi ut aliquip ex ea commodo.</p>
-                                <ul class="contact-info">
-                                    <li><i class="fa fa-phone"></i> +1 (234) 567 890</li>
-                                    <li><i class="fa fa-clock-o"></i> Working Hours: <br>Mon-Fri (9 am - 8 pm)</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="col col-md-3 col-sm-6">
-                            <div class="widget recent-post-widget">
-                                <h3>Recent Posts</h3>
-                                <ul>
-                                    <li>
-                                        <div class="entry-details">
-                                            <h4><a href="#">MOCRA Exhibit Restores Art to Life</a></h4>
-                                            <span class="date">5 hours ago</span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="entry-details">
-                                            <h4><a href="#">Inside the Winter Inn at College Church</a></h4>
-                                            <span class="date">5 hours ago</span>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="col col-md-3 col-sm-6">
-                            <div class="widget quick-links-widget">
-                                <h3>Useful Links</h3>
-                                <ul>
-                                    <li><a href="#">Home</a></li>
-                                    <li><a href="#">About</a></li>
-                                    <li><a href="#">Service</a></li>
-                                    <li><a href="#">Projects</a></li>
-                                    <li><a href="#">Career</a></li>
-                                    <li><a href="#">Recent News</a></li>
-                                </ul>
-                                <ul>
-                                    <li><a href="#">Testimonials</a></li>
-                                    <li><a href="#">Gallery</a></li>
-                                    <li><a href="#">Case Studies</a></li>
-                                    <li><a href="#">Shop</a></li>
-                                    <li><a href="#">Contact Us</a></li>
-                                    <li><a href="#">Privacy Policy</a></li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="col col-md-3 col-sm-6">
-                            <div class="widget newsletter-widget">
-                                <h3>Subscribe</h3>
-                                <p>Get latest updates and offers. Subscribe your Email for weekly Newsletter and business tips</p>
-                                <div class="newsletter-form">
-                                    <form>
-                                        <div>
-                                            <input type="email" class="form-control" placeholder="Your email..">
-                                            <button type="submit"><i class="fa fa-envelope"></i></button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div> <!-- end upper-footer -->
-            <div class="copyright-info">
-                <div class="container">
-                    <p>2018 &copy; All Rights Reserved by <a href="http://themeforest.net/user/themexriver">Themexriver</a></p>
-                    <ul>
-                        <li><a href="#">Privacy</a></li>
-                        <li><a href="#">Terms</a></li>
-                        <li><a href="#">Law Enforcement Guides</a></li>
-                        <li><a href="#">Advertise</a></li>
-                    </ul>
+<!-- latest-blog-section-s2 хэсгийн эхлэл -->
+<section class="latest-blog-section-s2 section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col col-xs-12">
+                <div class="section-title-s3">
+                    <h2>Блог ба Нийтлэл</h2>
                 </div>
             </div>
-        </footer>
-        <!-- end site-footer -->
+        </div>
+        <div class="row">
+            <div class="col col-xs-12">
+                <div class="blog-grids">
+                    <div class="grid">
+                        <div class="entry-media">
+                            <img src="assets/images/blog/img-1.jpg" alt>
+                            <div class="overlay">
+                                <a href="#"><i class="fa fa-link"></i></a>
+                            </div>
+                        </div>
+                        <div class="entry-meta">
+                            <ul>
+                                <li><a href="#"><i class="fa fa-tags"></i> Бизнес</a></li>
+                                <li><a href="#"><i class="fa fa-user"></i> Админ</a></li>
+                                <li><a href="#"><i class="fa fa-calendar"></i> 2018 оны 11-р сарын 29</a></li>
+                            </ul>
+                        </div>
+                        <div class="entry-body">
+                            <h3><a href="#">Өөрийн барааны үлдэгдлийг 12 сарын дотор зохицуулан ашиг олох</a></h3>
+                        </div>
+                    </div>
+                    <!-- Төстэй блогуудыг үргэлжлүүлэн орчуулав -->
+                    <!-- Хэрэгтэй нэмэлт хэсгүүдийг адил орчуулах шаардлагатай бол мэдэгдээрэй -->
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-xs-12">
+                <div class="more-news">
+                    <a href="#" class="theme-btn-s4">Илүү олон мэдээ</a>
+                </div>                    
+            </div>
+        </div>
+    </div> <!-- container-ийн төгсгөл -->
+</section>
+<!-- latest-blog-section-s2 хэсгийн төгсгөл -->
+
+<!-- site-footer хэсгийн эхлэл -->
+<footer class="site-footer">
+    <div class="upper-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col col-md-3 col-sm-6">
+                    <div class="widget about-widget">
+                        <div class="footer-logo"><img src="assets/images/footer-logo.png" alt></div>
+                        <p>Лорем ипсум текст, амьдралын хэв маягт зориулсан жишээ өгүүлбэр.</p>
+                        <ul class="contact-info">
+                            <li><i class="fa fa-phone"></i> +1 (234) 567 890</li>
+                            <li><i class="fa fa-clock-o"></i> Ажлын цаг: <br>Даваа-Баасан (өглөө 9 - орой 8)</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Хэрэгтэй нэмэлт footer хэсгийг орчуулан адил оруулав -->
+            </div>
+        </div>
+    </div> <!-- upper-footer-ийн төгсгөл -->
+    <div class="copyright-info">
+        <div class="container">
+            <p>2018 &copy; Бүх эрх хуулиар хамгаалагдсан <a href="http://themeforest.net/user/themexriver">Themexriver</a></p>
+            <ul>
+                <li><a href="#">Нууцлал</a></li>
+                <li><a href="#">Нөхцөл</a></li>
+                <li><a href="#">Хуулийн зааварчилгаа</a></li>
+                <li><a href="#">Зар сурталчилгаа</a></li>
+            </ul>
+        </div>
     </div>
-    <!-- end of page-wrapper -->
+</footer>
+<!-- site-footer хэсгийн төгсгөл -->
+
 
 
 
